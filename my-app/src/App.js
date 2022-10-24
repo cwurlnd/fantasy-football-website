@@ -1,3 +1,4 @@
+import "./styles.css";
 import Components from "./Components/Components.js";
 import * as Env from "./environments";
 import Parse from "parse";
