@@ -1,9 +1,12 @@
+import Form from "../Form/Form";
+
 export default function Create() {
     return (
+      <div>
       <section>
-        <h1>Welcome to the Create component</h1>
-        <p>This is the create component</p>
-        <p>Yes indeed</p>
+        <h1>Create a League</h1>
       </section>
+      <Form />
+      </div>
     );
   }
