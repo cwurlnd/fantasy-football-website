@@ -14,9 +14,9 @@ export default function Components() {
     <Router>
       <NavBar />  
       <Switch>
-        <Route path="/" component={Home} />
         <Route path="/create" component={Create} />
         <Route path="/leagues" component={Leagues} />
+        <Route path="/" component={Home} />
         <Redirect to="/" />
       </Switch>
     </Router>
