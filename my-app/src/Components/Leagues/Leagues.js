@@ -20,7 +20,7 @@ export default function Leagues() {
               {leagues.map((league) => (
                 <div>
                   <span>
-                    <li key={league.id}>{league.get("name")}</li>{" "}
+                    <li key={league.id}>{league.get("name")} | {league.get("size")} | {league.get("scoring")}</li>{" "}
                   </span>
                 </div>
               ))}
