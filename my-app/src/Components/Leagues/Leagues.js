@@ -4,6 +4,7 @@ import { getAllLeagues } from "../../Common/Services/Service";
 export default function Leagues() {
   const [leagues, setLeagues] = useState([]);
 
+  // Use service to get all the leagues
   useEffect(() => {
     getAllLeagues().then((leagues) => {
       setLeagues(leagues);
@@ -15,6 +16,7 @@ export default function Leagues() {
         <h1>Current Leagues</h1>
         <p>The current leagues created are listed below:</p>
         <div>
+          {/* List the leagues */}
           {leagues.length > 0 && (
             <ul>
               {leagues.map((league) => (

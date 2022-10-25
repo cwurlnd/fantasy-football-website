@@ -12,6 +12,7 @@ import {
 
 export default function Components() {
   return (
+    // Routing to certain pages
     <Router>
       <NavBar />  
       <Switch>

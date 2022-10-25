@@ -8,6 +8,7 @@ export default function Create() {
   const [scoring, setScoring] = useState("Standard");
   const [add, setAdd] = useState(false);
 
+  // Actually add the league to the database
   useEffect(() => {
     console.log(size);
     if (league && add && size && scoring) {
@@ -17,22 +18,26 @@ export default function Create() {
     }
   }, [league, add, size, scoring]);
 
+  // Handle clicking submit to add the actual league
   const onClickHandler = (e) => {
     alert("League created!")
     e.preventDefault();
     setAdd(true);
   };
 
+  // Handle any changes in league name
   const onChangeHandlerLeague = (e) => {
     e.preventDefault();
     setLeague(e.target.value);
   };
 
+  // Handle any changes in league size
   const onChangeHandlerSize = (e) => {
     e.preventDefault();
     setSize(e.target.value);
   };
 
+  // Handle any changes in league scoring
   const onChangeHandlerScoring = (e) => {
     e.preventDefault();
     setScoring(e.target.value);
