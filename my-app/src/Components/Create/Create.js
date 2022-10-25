@@ -7,7 +7,6 @@ export default function Create() {
   const [add, setAdd] = useState(false);
 
   useEffect(() => {
-    // Check for add flag and make sure name state variable is defined
     if (league && add) {
       createLeague(league).then((newLeague) => {
         setAdd(false);
@@ -17,6 +16,7 @@ export default function Create() {
   }, [league, add]);
 
   const onClickHandler = (e) => {
+    alert("League created!")
     e.preventDefault();
     setAdd(true);
   };

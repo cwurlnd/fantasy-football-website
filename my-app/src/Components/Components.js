@@ -1,6 +1,7 @@
 import Home from "./Home/Home";
 import Create from "./Create/Create";
 import Leagues from "./Leagues/Leagues";
+import TBL from "./TBL/TBL";
 import NavBar from "./NavBar/NavBar";
 import {
   BrowserRouter as Router,
@@ -16,6 +17,7 @@ export default function Components() {
       <Switch>
         <Route path="/create" component={Create} />
         <Route path="/leagues" component={Leagues} />
+        <Route path="/tbl" component={TBL} />
         <Route path="/" component={Home} />
         <Redirect to="/" />
       </Switch>

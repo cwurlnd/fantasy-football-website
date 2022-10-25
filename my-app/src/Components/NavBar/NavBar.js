@@ -7,6 +7,7 @@ export default function NavBar() {
             <li><Link to="/">Home</Link></li>
             <li><Link to="/create">Create a League</Link></li>
             <li><Link to="/leagues">Current Leagues</Link></li>
+            <li><Link to="/tbl">Teams by League</Link></li>
           </ul>
         </div>
     );
