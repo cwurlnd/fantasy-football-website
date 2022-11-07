@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0] - 2022-11-09
+
+### Added
+
+- Added authentication
+
 ## [0.2.0] - 2022-10-26
 
 ### Added
