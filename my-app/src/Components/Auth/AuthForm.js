@@ -1,4 +1,6 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
@@ -16,7 +18,6 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             value={user.firstName}
             onChange={onChange}
             name="firstName"
-            placeholder="first name"
             required
           />
         </div>
@@ -63,9 +64,15 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
           />
         </div>
         <div className="form-group">
-          <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
+          <br></br>
+          <button type="submit" className="btn btn-primary" style={{
+          marginRight: '1rem',
+          }} onSubmit={onSubmit}>
             Submit
           </button>
+          <Link to="/auth">
+            <Button variant="danger">Back</Button>{' '}
+          </Link>
         </div>
     </div>
   </form>

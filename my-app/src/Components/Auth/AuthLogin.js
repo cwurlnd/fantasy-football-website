@@ -57,7 +57,7 @@ const AuthLogin = () => {
   };
 
   return (
-    <div>
+    <div id="temp">
       <AuthForm
         user={currentUser}
         isLogin={true}

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { checkUser } from "./AuthService";
+import Button from 'react-bootstrap/Button';
 
 const AuthModule = () => {
   const navigate = useNavigate();
@@ -15,15 +16,15 @@ const AuthModule = () => {
   }, [navigate]);
 
   return (
-    <div>
+    <div id="temp">
       <br />
       <Link to="/auth/register">
-        <button>Register</button>
+        <Button variant="primary">Register</Button>{' '}
       </Link>
       <br />
       <br />
       <Link to="/auth/login">
-        <button>Login</button>
+        <Button variant="primary">Login</Button>{' '}
       </Link>
     </div>
   );

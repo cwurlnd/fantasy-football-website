@@ -34,14 +34,14 @@ export default function TBL() {
     };
 
     return (
-      <section>
+      <section id="temp">
         <h1>Teams by League</h1>
         <p>The current teams in a specified league are listed below:</p>
 
 
         {/* Create dropdown of all the leagues */}
         <div>
-        <select value={value} onChange={handleChange}>
+        <select class="form-select" value={value} onChange={handleChange}>
         {leagues.map((league) => (
                 <option value={league.get("name")}>{league.get("name")}</option>
         ))}

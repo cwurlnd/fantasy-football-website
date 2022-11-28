@@ -10,7 +10,6 @@ export default function Create() {
 
   // Actually add the league to the database
   useEffect(() => {
-    console.log(size);
     if (league && add && size && scoring) {
       createLeague(league, size, scoring).then((newLeague) => {
         setAdd(false);
@@ -44,7 +43,7 @@ export default function Create() {
   };
 
     return (
-      <div>
+      <div id="temp">
       <section>
         <h1>Create a League</h1>
       </section>

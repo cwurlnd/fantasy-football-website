@@ -12,7 +12,7 @@ export default function Leagues() {
   }, []);
 
     return (
-      <section>
+      <section id="temp">
         <h1>Current Leagues</h1>
         <p>The current leagues created are listed below:</p>
         <div>

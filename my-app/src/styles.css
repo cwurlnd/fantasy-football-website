@@ -1,56 +1,17 @@
-/* Creating the flexbox */
-.navigation {
-    /* flexbox styles */
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: left;
-  
-    list-style: none;
-    margin: 0;
-    background: red;
-  }
-  
-  /* Adjustments for each button in flexbox */
-  .navigation a {
-    display: block;
-    text-decoration: none;
-    padding: 0.5em;
-    color: white;
-  }
-  
-  /* Adjustments on hovering over each flexbox option */
-  .navigation a:hover {
-    background: white;
-    color: blue;
-    font-weight: 400;
-  }
-  
-  /* Adjusting flexbox to be vertical when width < 600px, among other things */
-  @media all and (max-width: 600px) {
-    .navigation {
-      flex-flow: column wrap;
-      padding: 0;
-    }
-  
-    .navigation a {
-      text-align: center;
-      padding: 10px;
-      border-top: 1px solid rgba(255, 255, 255, 0.3);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    }
-  
-    .navigation li:last-of-type a {
-      border-bottom: none;
-    }
-  }
-  
-  /* Change h1 font */
-  h1 {
-    font-family: "Bowlby One SC", cursive;
-  }
-  
-  /* Change paragraph font */
-  p {
-    font-family: "Varela Round", sans-serif;
-  }
-  
+#temp {
+  height: 600px;
+  background-color: rgb(99, 201, 238); /* For browsers that do not support gradients */
+  background-image: linear-gradient(rgb(99, 201, 238), white);
+  padding-top: 30px;
+  padding-right: 80px;
+  padding-bottom: 50px;
+  padding-left: 80px;
+}
+
+h1 {
+  font-family: 'Titillium Web', sans-serif;
+}
+
+body {
+  font-family: 'Oxygen', sans-serif;
+}
