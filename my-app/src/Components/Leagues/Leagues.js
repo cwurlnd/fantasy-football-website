@@ -8,6 +8,10 @@ export default function Leagues() {
   useEffect(() => {
     getAllLeagues().then((leagues) => {
       setLeagues(leagues);
+      for (var i = 0; i < 3; i++) {
+        console.log(leagues[i]);
+        console.log(leagues[i].get("name"));
+    }
     });
   }, []);
 

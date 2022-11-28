@@ -2,6 +2,8 @@ import Home from "./Home/Home";
 import Create from "./Create/Create";
 import Leagues from "./Leagues/Leagues";
 import TBL from "./TBL/TBL";
+import Profile from "./Profile/Profile";
+import Edit from "./Profile/Edit";
 import NavBar from "./NavBar/NavBar";
 import AuthModule from "./Auth/Auth.js";
 import AuthRegister from "./Auth/AuthRegister";
@@ -35,6 +37,14 @@ export default function Components() {
         <Route
           path="/tbl"
           element={<ProtectedRoute path="/tbl" element={TBL} />}
+        />
+        <Route
+          path="/profile"
+          element={<ProtectedRoute path="/profile" element={Profile} />}
+        />
+        <Route
+          path="/edit"
+          element={<ProtectedRoute path="/edit" element={Edit} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

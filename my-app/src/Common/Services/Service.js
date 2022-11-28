@@ -40,6 +40,37 @@ export const getAllLeagues = () => {
   });
 };
 
+export const getAllTeams = () => {
+  const NFL = Parse.Object.extend("NFL");
+  const query = new Parse.Query(NFL);
+  return query.find().then((results) => {
+    return results;
+  });
+};
+
+export const getUserInfo = () => {
+  const myUser = Parse.User.current().getUsername();
+  const User = Parse.Object.extend("User");
+  const query = new Parse.Query(User);
+  query.equalTo("username", myUser);
+  return query.find().then((results) => {
+    console.log(results[0]);
+    return results[0];
+  });
+}
+
+export const editUser = (firstName, lastName, email, team) => {
+  const currentUser = Parse.User.current();
+  currentUser.set('username', email);
+  currentUser.set('email', email);
+  currentUser.set('firstName', firstName);
+  currentUser.set('lastName', lastName);
+  currentUser.set('favoriteTeam', team);
+  return currentUser.save().then((result) => {
+    return result;
+  });
+}
+
 async function getLeague(id) {
   const League = Parse.Object.extend("League");
   const query = new Parse.Query(League);
