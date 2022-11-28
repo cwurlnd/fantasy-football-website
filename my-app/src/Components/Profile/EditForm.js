@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
-export default function EditForm({ onChangeFirst, onChangeLast, onChangeEmail, onChangeTeam, onClick }) {
+export default function EditForm({ onChangeFirst, onChangeLast, onChangeTeam, onClick }) {
     const [teams, setTeams] = useState([]);
 
     // Get all of the teams for the dropdown
@@ -41,18 +41,6 @@ export default function EditForm({ onChangeFirst, onChangeLast, onChangeEmail, o
             maxLength="50"
             onChange={onChangeLast}
             name="lastName"
-            required
-          />
-        </div>{" "}
-        <div className="form-group">
-          <label>Username/Email</label>
-          <br />
-          <input
-            type="email"
-            className="form-control"
-            id="email-input"
-            onChange={onChangeEmail}
-            name="email"
             required
           />
         </div>{" "}

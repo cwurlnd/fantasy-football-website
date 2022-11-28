@@ -8,21 +8,20 @@ export default function Create() {
 
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
   const [favoriteTeam, setFavoriteTeam] = useState("Arizona Cardinals");
   const [edit, setEdit] = useState(false);
 
   // Actually add the league to the database
   useEffect(() => {
-    if (firstName && edit && lastName && email) {
-      editUser(firstName, lastName, email, favoriteTeam).then((newLeague) => {
+    if (firstName && edit && lastName) {
+      editUser(firstName, lastName, favoriteTeam).then((newLeague) => {
         alert(
             "Profile successfully edited!"
         );
         navigate("/profile");
       });
     }
-  }, [firstName, lastName, email, favoriteTeam, edit, navigate]);
+  }, [firstName, lastName, favoriteTeam, edit, navigate]);
 
   // Handle clicking submit to add the actual league
   const onClickHandler = (e) => {
@@ -42,12 +41,6 @@ export default function Create() {
     setLastName(e.target.value);
   };
 
-  // Handle any changes in league scoring
-  const onChangeEmailHandler = (e) => {
-    e.preventDefault();
-    setEmail(e.target.value);
-  };
-
   const onChangeTeamHandler = (e) => {
     e.preventDefault();
     setFavoriteTeam(e.target.value);
@@ -58,7 +51,7 @@ export default function Create() {
       <section>
         <h1>Edit Your Profile</h1>
       </section>
-      <EditForm onChangeFirst={onChangeFirstHandler} onChangeLast={onChangeLastHandler} onChangeEmail={onChangeEmailHandler} onChangeTeam={onChangeTeamHandler} onClick={onClickHandler}/>
+      <EditForm onChangeFirst={onChangeFirstHandler} onChangeLast={onChangeLastHandler} onChangeTeam={onChangeTeamHandler} onClick={onClickHandler}/>
       </div>
     );
   }

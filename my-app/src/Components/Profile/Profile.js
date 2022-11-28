@@ -6,7 +6,6 @@ import Button from 'react-bootstrap/Button';
 export default function Profile() {
   const [firstName, setFirstName] = useState([]);
   const [lastName, setLastName] = useState([]);
-  const [email, setEmail] = useState([]);
   const [favoriteTeam, setFavoriteTeam] = useState([]);
 
   // Use service to get all the leagues
@@ -14,7 +13,6 @@ export default function Profile() {
     getUserInfo().then((user) => {
       setFirstName(user.get("firstName"));
       setLastName(user.get("lastName"));
-      setEmail(user.get("email"));
       setFavoriteTeam(user.get("favoriteTeam"));
     });
   }, []);
@@ -25,7 +23,6 @@ export default function Profile() {
         <br></br>
         <p>First Name: {firstName}</p>
         <p>Last Name: {lastName}</p>
-        <p>Email Address: {email}</p>
         <p>Favorite Football Team: {favoriteTeam}</p>
         <br></br>
         <Link to="/edit">

@@ -59,10 +59,8 @@ export const getUserInfo = () => {
   });
 }
 
-export const editUser = (firstName, lastName, email, team) => {
+export const editUser = (firstName, lastName, team) => {
   const currentUser = Parse.User.current();
-  currentUser.set('username', email);
-  currentUser.set('email', email);
   currentUser.set('firstName', firstName);
   currentUser.set('lastName', lastName);
   currentUser.set('favoriteTeam', team);
