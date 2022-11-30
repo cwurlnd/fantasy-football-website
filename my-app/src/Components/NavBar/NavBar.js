@@ -37,6 +37,9 @@ function ColorSchemesExample() {
             <LinkContainer to="/tbl">
                 <Nav.Link>Teams by League</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/users">
+                <Nav.Link>Users</Nav.Link>
+            </LinkContainer>
             <LinkContainer to="/profile">
                 <Nav.Link>My Profile</Nav.Link>
             </LinkContainer>

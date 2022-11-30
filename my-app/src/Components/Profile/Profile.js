@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
 export default function Profile() {
-  const [firstName, setFirstName] = useState([]);
-  const [lastName, setLastName] = useState([]);
-  const [favoriteTeam, setFavoriteTeam] = useState([]);
+  const [firstName, setFirstName] = useState();
+  const [lastName, setLastName] = useState();
+  const [favoriteTeam, setFavoriteTeam] = useState();
 
   // Use service to get all the leagues
   useEffect(() => {
