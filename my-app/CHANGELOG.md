@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0] - 2022-12-10
+
+### Changed
+
+- Completely redesigned the website using React Boostrap
+
+### Added
+
+- Added team addition functionality
+- Added profile pages
+
 ## [0.3.0] - 2022-11-09
 
 ### Added

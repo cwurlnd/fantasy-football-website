@@ -1,3 +1,9 @@
+# Wade Wurl Fantasy Football
+
+## Get the best fantasy football experience, without players or games!
+
+This website, created through React, allows users to create fantasy teams and leagues and view other users on the platform.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
