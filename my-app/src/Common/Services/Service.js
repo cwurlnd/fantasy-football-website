@@ -10,6 +10,25 @@ export const getTeamsByLeague = async (id) => {
   });
 };
 
+export const getChats = async (id) => {
+  const Message = Parse.Object.extend("Message");
+  const query = new Parse.Query(Message);
+  return query.find().then((results) => {
+    return results;
+  });
+}
+
+
+export const addChat = async (text) => {
+  const Message = Parse.Object.extend("Message");
+  const message = new Message();
+  message.set("text", text);
+  message.set("user", Parse.User.current());
+  return message.save().then((result) => {
+    return result;
+  });
+};
+
 export const createLeague = (Name, Size, Scoring) => {
   const League = Parse.Object.extend("League");
   const league = new League();
@@ -31,11 +50,49 @@ export const getLeagueByName = (Name) => {
   });
 };
 
+export const getLeagueByUser = () => {
+  const League = Parse.Object.extend("League");
+  const query = new Parse.Query(League);
+  query.equalTo("user", Parse.User.current());
+  return query.find().then((results) => {
+    return results;
+  });
+};
+
 export const getAllLeagues = () => {
   const League = Parse.Object.extend("League");
   const query = new Parse.Query(League);
   return query.find().then((results) => {
     return results;
+  });
+};
+
+export const deleteLeague = (id) => {
+  // delete teams in league 
+  getTeamsByLeague(id).then((results) => {
+    results.map((team) => {
+      deleteTeam(team.id);
+    });
+  });
+  // delete league
+  const League = Parse.Object.extend("League");
+  const query = new Parse.Query(League);
+  return query.get(id).then((league) => {
+    return league.destroy().then((results) => {
+      console.log("league removed");
+      return results;
+    });
+  });
+};
+
+export const deleteTeam = (id) => {
+  const Team = Parse.Object.extend("Team");
+  const query = new Parse.Query(Team);
+  return query.get(id).then((team) => {
+    return team.destroy().then((results) => {
+      console.log("team removed");
+      return results;
+    });
   });
 };
 
