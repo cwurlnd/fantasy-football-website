@@ -68,11 +68,29 @@ export const getAllLeagues = () => {
 };
 
 export const deleteLeague = (id) => {
+  // delete teams in league 
+  getTeamsByLeague(id).then((results) => {
+    results.map((team) => {
+      deleteTeam(team.id);
+    });
+  });
+  // delete league
   const League = Parse.Object.extend("League");
   const query = new Parse.Query(League);
   return query.get(id).then((league) => {
     return league.destroy().then((results) => {
       console.log("league removed");
+      return results;
+    });
+  });
+};
+
+export const deleteTeam = (id) => {
+  const Team = Parse.Object.extend("Team");
+  const query = new Parse.Query(Team);
+  return query.get(id).then((team) => {
+    return team.destroy().then((results) => {
+      console.log("team removed");
       return results;
     });
   });

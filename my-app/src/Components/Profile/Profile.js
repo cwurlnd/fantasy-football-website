@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserInfo, getLeagueByUser, deleteLeague } from "../../Common/Services/Service";
+import { getUserInfo, getLeagueByUser, deleteLeague, getTeamsByLeague, deleteTeam } from "../../Common/Services/Service";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Parse from "parse";
@@ -9,6 +9,8 @@ export default function Profile() {
   const [lastName, setLastName] = useState();
   const [favoriteTeam, setFavoriteTeam] = useState();
   const [leagues, setLeagues] = useState([]);
+  const [teams, showTeams] = useState([]);
+  const [shownId, shownIdChange] = useState();
 
   // Use service to get all the leagues
   useEffect(() => {
@@ -53,7 +55,26 @@ export default function Profile() {
       });
     });
     console.log(id);
+  };
 
+  const deleteTeamHandler = async function (id) {
+    deleteTeam(id).then((team) => {
+      getTeamsByLeague(team.get("league").id).then((teams) => {
+        showTeams(teams);
+        console.log("team deleted");
+      });
+    });
+    console.log(id);
+  };
+
+  const seeTeamsHandler = async function (id) {
+    getTeamsByLeague(id).then((retrievedTeams) => {
+      showTeams(retrievedTeams);
+      shownIdChange(id);
+      console.log("seeTeamsHandler");
+      console.log(retrievedTeams);
+      console.log(id);
+    });
   };
 
     return (
@@ -71,7 +92,32 @@ export default function Profile() {
                   <div>
                     <span>
                       <li key={league.id}>{league.get("name")} | {league.get("size")} | {league.get("scoring")}</li>{" "}
-                      <Button variant="secondary" onClick={() => {deleteLeagueHandler(league.id);}}>Delete</Button>
+                      {shownId != league.id && (
+                        <div>
+                          <Button variant="secondary" onClick={() => {seeTeamsHandler(league.id);}}>See More</Button>
+                          <Button variant="secondary" onClick={() => {deleteLeagueHandler(league.id);}}>Delete</Button>
+                        </div>
+                        
+                      )}
+                      {shownId == league.id && teams.length <= 0 && (
+                        <div>
+                          <li>No teams in this league!</li>
+                          <Button variant="secondary" onClick={() => {deleteLeagueHandler(league.id);}}>Delete</Button>
+                        </div>
+                      )}
+                      {shownId == league.id && teams.length > 0 && (
+                        <div>
+                          <ul>
+                            {teams.map((team) => (
+                              <li key={team.id}>
+                                Team name: {team.get("name")} | Owner: {team.get("user").get("firstName")} {team.get("user").get("lastName")}{" "}
+                                <Button variant="secondary" onClick={() => {deleteTeamHandler(team.id);}}>Delete</Button>
+                              </li>
+                            ))}
+                          </ul>
+                          <Button variant="secondary" onClick={() => {deleteLeagueHandler(league.id);}}>Delete</Button>
+                        </div>
+                      )}
                     </span>
                   </div>
                 ))}
