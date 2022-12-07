@@ -9,6 +9,7 @@ import NavBar from "./NavBar/NavBar";
 import AuthModule from "./Auth/Auth.js";
 import AuthRegister from "./Auth/AuthRegister";
 import AuthLogin from "./Auth/AuthLogin";
+import Chat from "./Chat/Chat";
 import ProtectedRoute from "../Common/ProtectedRoute/ProtectedRoute.js";
 import {
   BrowserRouter as Router,
@@ -54,6 +55,10 @@ export default function Components() {
         <Route
           path="/users"
           element={<ProtectedRoute path="/users" element={Users} />}
+        />
+        <Route
+          path="/chat"
+          element={<ProtectedRoute path="/chat" element={Chat} />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

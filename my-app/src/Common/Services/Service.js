@@ -10,6 +10,25 @@ export const getTeamsByLeague = async (id) => {
   });
 };
 
+export const getChats = async (id) => {
+  const Message = Parse.Object.extend("Message");
+  const query = new Parse.Query(Message);
+  return query.find().then((results) => {
+    return results;
+  });
+}
+
+
+export const addChat = async (text) => {
+  const Message = Parse.Object.extend("Message");
+  const message = new Message();
+  message.set("text", text);
+  message.set("user", Parse.User.current());
+  return message.save().then((result) => {
+    return result;
+  });
+};
+
 export const createLeague = (Name, Size, Scoring) => {
   const League = Parse.Object.extend("League");
   const league = new League();
