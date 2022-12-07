@@ -50,11 +50,31 @@ export const getLeagueByName = (Name) => {
   });
 };
 
+export const getLeagueByUser = () => {
+  const League = Parse.Object.extend("League");
+  const query = new Parse.Query(League);
+  query.equalTo("user", Parse.User.current());
+  return query.find().then((results) => {
+    return results;
+  });
+};
+
 export const getAllLeagues = () => {
   const League = Parse.Object.extend("League");
   const query = new Parse.Query(League);
   return query.find().then((results) => {
     return results;
+  });
+};
+
+export const deleteLeague = (id) => {
+  const League = Parse.Object.extend("League");
+  const query = new Parse.Query(League);
+  return query.get(id).then((league) => {
+    return league.destroy().then((results) => {
+      console.log("league removed");
+      return results;
+    });
   });
 };
 

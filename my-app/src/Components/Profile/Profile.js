@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getUserInfo } from "../../Common/Services/Service";
+import { getUserInfo, getLeagueByUser, deleteLeague } from "../../Common/Services/Service";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Parse from "parse";
@@ -8,9 +8,16 @@ export default function Profile() {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [favoriteTeam, setFavoriteTeam] = useState();
-
+  const [leagues, setLeagues] = useState([]);
 
   // Use service to get all the leagues
+  useEffect(() => {
+    getLeagueByUser().then((leagues) => {
+      setLeagues(leagues);
+    });
+  }, []);
+
+  // Use service to get the user
   useEffect(() => {
     getUserInfo().then((user) => {
       setFirstName(user.get("firstName"));
@@ -30,6 +37,7 @@ export default function Profile() {
       }
       // Update state variable holding current user
       // getCurrentUser();
+      console.log("logged out");
       return true;
     } catch (error) {
       alert(`Error! ${error.message}`);
@@ -37,6 +45,16 @@ export default function Profile() {
     }
   };
 
+  const deleteLeagueHandler = async function (id) {
+    deleteLeague(id).then(() => {
+      getLeagueByUser().then((leagues) => {
+        setLeagues(leagues);
+        console.log("leagues set");
+      });
+    });
+    console.log(id);
+
+  };
 
     return (
       <section id="temp">
@@ -45,6 +63,24 @@ export default function Profile() {
         <p>First Name: {firstName}</p>
         <p>Last Name: {lastName}</p>
         <p>Favorite Football Team: {favoriteTeam}</p>
+        <h2>Leagues: </h2>
+        <div>
+          {leagues.length > 0 && (
+              <ul>
+                {leagues.map((league) => (
+                  <div>
+                    <span>
+                      <li key={league.id}>{league.get("name")} | {league.get("size")} | {league.get("scoring")}</li>{" "}
+                      <Button variant="secondary" onClick={() => {deleteLeagueHandler(league.id);}}>Delete</Button>
+                    </span>
+                  </div>
+                ))}
+              </ul>
+            )}
+          {leagues.length == 0 && (
+            <h5>You do not run any leagues</h5>
+          )}
+        </div>
         <br></br>
         <Link to="/edit">
             <Button variant="primary">Edit Your Profile</Button>{' '}
@@ -52,7 +88,7 @@ export default function Profile() {
 
         {/* May need to bug check these lines */}
         <Link to="/"> 
-          <Button variant="primary" onClick={doUserLogOut}>Logout</Button>
+          <Button variant="secondary" onClick={doUserLogOut}>Logout</Button>
         </Link>
       </section>
     );
