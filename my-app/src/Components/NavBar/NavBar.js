@@ -40,12 +40,13 @@ function ColorSchemesExample() {
             <LinkContainer to="/users">
                 <Nav.Link>Users</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/profile">
-                <Nav.Link>My Profile</Nav.Link>
-            </LinkContainer>
             <LinkContainer to="/chat">
               <Nav.Link>Chat</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/profile">
+                <Nav.Link>My Profile</Nav.Link>
+            </LinkContainer>
+
           </Nav>
           <Nav>
             <LinkContainer to="/auth">
