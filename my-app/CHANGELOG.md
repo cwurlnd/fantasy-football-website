@@ -10,8 +10,10 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Added team addition functionality
+- Added team addition and removal functionality
+- Added league removal functionality
 - Added profile pages
+- Added chat feature
 
 ## [0.3.0] - 2022-11-09
 
